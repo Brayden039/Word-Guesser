@@ -10,6 +10,7 @@ class Main
     words.add("Words");
     words.add("Guess");
     String word = words.get((int) (Math.random() * 4));
+    String currentWord = "";
     int guesses = word.length();
     int incorrectGuess = 0;
     int correctGuesses = 0;
@@ -17,14 +18,14 @@ class Main
     boolean incorrect = false;
     boolean end = false;
 
-    //testing
-    System.out.println(word);
+   
+   
     for(int i = 0; i < word.length(); i++)
     {
-      System.out.print("*");
+      currentWord = currentWord + "*";
     }
 
-    System.out.println();
+    System.out.println(currentWord); //remote this
     Scanner keyboard = new Scanner(System.in);
     while(guesses > 0 && end != true)
     {
@@ -35,10 +36,12 @@ class Main
       {
         if(word.charAt(i) == keyGuess)
         {
+          currentWord = currentWord.substring(0, i) + keyGuess + currentWord.substring(i + 1);
           System.out.println("Correct Guess!");
           incorrect = false;
           correct = true;
           correctGuesses++;
+          System.out.println(currentWord);
         }
         
         
@@ -51,20 +54,27 @@ class Main
         System.out.println("You have " + incorrectGuess + " incorrect guesses so far!");
         if(incorrectGuess == 2)
         {
-          System.out.println("\nYou Lose");
+          System.out.println("\nYou have too many incorrect guesses. You Lose.");
+          System.out.println("The word was:" + word);
           end = true;
         }
         
+        
       }
-      
-
-     
-      
+           
       guesses--;
+      if(guesses == 0)
+        {
+          System.out.println("\nYou ran out of guesses. You Lose.");
+          System.out.println("The word was:" + word);
+          end = true;
+  
+        }
     }
 
     if(guesses == 0 && correctGuesses == word.length())
     {
+      System.out.println("You guessed that the word was:" + word);
       System.out.println("\nYou WIN!");
     }
     
