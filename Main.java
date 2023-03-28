@@ -55,7 +55,7 @@ class Main
         if(incorrectGuess == 2)
         {
           System.out.println("\nYou have too many incorrect guesses. You Lose.");
-          System.out.println("The word was:" + word);
+          System.out.println("The word was: " + word);
           end = true;
         }
         
@@ -66,7 +66,7 @@ class Main
       if(guesses == 0)
         {
           System.out.println("\nYou ran out of guesses. You Lose.");
-          System.out.println("The word was:" + word);
+          System.out.println("The word was :" + word);
           end = true;
   
         }
@@ -74,7 +74,7 @@ class Main
 
     if(guesses == 0 && correctGuesses == word.length())
     {
-      System.out.println("You guessed that the word was:" + word);
+      System.out.println("You guessed that the word was: " + word);
       System.out.println("\nYou WIN!");
     }
     
