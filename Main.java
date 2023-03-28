@@ -15,6 +15,7 @@ class Main
     int correctGuesses = 0;
     boolean correct = false;
     boolean incorrect = false;
+    boolean end = false;
 
     //testing
     System.out.println(word);
@@ -25,7 +26,7 @@ class Main
 
     System.out.println();
     Scanner keyboard = new Scanner(System.in);
-    while(guesses > 0)
+    while(guesses > 0 && end != true)
     {
       incorrect = true;
       System.out.println("Enter a single letter as your guess:");
@@ -47,7 +48,13 @@ class Main
       {
         incorrectGuess++;
         System.out.println("Incorrect Guess.");
-        System.out.println("You have" + incorrectGuess + " incorrect guesses so far!");
+        System.out.println("You have " + incorrectGuess + " incorrect guesses so far!");
+        if(incorrectGuess == 2)
+        {
+          System.out.println("\nYou Lose");
+          end = true;
+        }
+        
       }
       
 
@@ -59,10 +66,6 @@ class Main
     if(guesses == 0 && correctGuesses == word.length())
     {
       System.out.println("\nYou WIN!");
-    }
-    else
-    {
-      System.out.println("\nYou Lose.");
     }
     
   }
